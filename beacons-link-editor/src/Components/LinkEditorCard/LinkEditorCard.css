@@ -1,3 +1,8 @@
 .editor-card-wrapper {
     border: solid black 1px;
 }
+
+.add-link-widget {
+    display: flex;
+    flex-direction: column;
+}
