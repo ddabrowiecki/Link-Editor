@@ -1,0 +1,7 @@
+.link-editor-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}

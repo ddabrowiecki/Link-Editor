@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import LinkEditorCard from './Components/LinkEditorCard/LinkEditorCard'
+import LinkPreviewCard from './Components/LinkPreviewCard/LinkPreviewCard'
+
+const links = [{ linkUrl: 'http://www.google.com', linkTitle: "Google" }, { linkUrl: 'http://www.youtube.com', linkTitle: "YouTube" }]
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LinkEditorCard className="link-editor-card" links={links} title={'Add New Links'}/>
+      <LinkPreviewCard className="link-preview-card" links={links} title={'Link Preview'}/>
     </div>
   );
 }
