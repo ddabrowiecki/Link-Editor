@@ -1,16 +1,10 @@
 .App {
   display: flex;
   justify-content: space-around;
-
-  
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  background-color: #C3B5A680;
+  color: #FFFFFF;
 }
 
-.App .link-preview-card {
-  border: 2px solid black
-}
-
-.App .link-editor-card {
-  border: 2px solid black
-}
 
 

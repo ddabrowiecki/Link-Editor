@@ -1,5 +1,6 @@
 .editor-card-wrapper {
-    border: solid black 1px;
+    border: solid #86684A 1px;
+    border-radius: 3px;
 }
 
 .add-link-widget {

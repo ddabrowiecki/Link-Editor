@@ -6,7 +6,9 @@ const LinkPreviewCard = ({ title, links, updateClicks }) => {
     <div className="preview-card-wrapper">
       <div>{title}</div>
       {links.map((link) => (
-        <LinkPreview key={link.id} link={link} updateClicks={updateClicks} />
+          <div className="link-preview" key={link.id}>
+        <LinkPreview   link={link} updateClicks={updateClicks} />
+        </div>
       ))}
     </div>
   );
