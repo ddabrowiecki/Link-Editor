@@ -2,7 +2,7 @@ import LinkEditor from "../LinkEditor/LinkEditor";
 import AddOrEditLink from "../AddOrEditLink/AddOrEditLink";
 import "./LinkEditorCard.css";
 
-const LinkEditorCard = ({ links, title, setAddedLinks, updateLinks }) => {
+const LinkEditorCard = ({ links, title, updateLinks, addLink, deleteLink }) => {
   return (
     <div className="editor-card-wrapper">
       <div>{title}</div>
@@ -13,12 +13,12 @@ const LinkEditorCard = ({ links, title, setAddedLinks, updateLinks }) => {
             <LinkEditor
               key={link.id}
               link={link}
-              setAddedLinks={setAddedLinks}
               updateLinks={updateLinks}
+              deleteLink={deleteLink}
             />
           )
       )}
-      <AddOrEditLink setAddedLinks={setAddedLinks} addOrEdit={"add"} />
+      <AddOrEditLink addOrEdit={"add"} addLink={addLink}/>
     </div>
   );
 };

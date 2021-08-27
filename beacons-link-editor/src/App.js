@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [linksInBackend, setLinksInBackend] = useState([]);
-  const [addedLinks, setAddedLinks] = useState([]);
 
   useEffect(() => {
     function getInitialData() {
@@ -18,21 +17,33 @@ function App() {
   }, []);
 
   const updateLinks = (linkObject) => {
-    const newLinkList = linksInBackend.map((link) => (link.id === linkObject.id ? linkObject : link));
-    setLinksInBackend(newLinkList)
+    const newLinkList = linksInBackend.map((link) =>
+      link.id === linkObject.id ? linkObject : link
+    );
+    setLinksInBackend(newLinkList);
   };
 
-  const buildLinksWithIds = () => {
-    const addedLinksWithIds = addedLinks.map((link) => {
-      return { link: link, title: link.title, clicks: 0, id: "blah" };
-    });
-    return addedLinksWithIds;
+  const addLink = (linkObject) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(linkObject),
+    };
+    fetch("https://retoolapi.dev/T6xAX6/links", requestOptions)
+      .then((response) => response.json())
+      .then((link) => setLinksInBackend(linksInBackend.concat([link])));
   };
 
-  // if (addedLinks) {
-  //   const linksToAdd = buildLinksWithIds();
-  //   setPresentationalLinks(presentationalLinks.concat(linksToAdd))
-  // }
+  const deleteLink = (id) => {
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch(`https://retoolapi.dev/T6xAX6/links/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((link) =>
+        setLinksInBackend(linksInBackend.filter((link) => link.id !== id))
+      );
+  };
 
   return (
     <div className="App">
@@ -40,8 +51,9 @@ function App() {
         className="link-editor-card"
         links={linksInBackend}
         title={"Add New Links"}
-        setAddedLinks={setAddedLinks}
         updateLinks={updateLinks}
+        addLink={addLink}
+        deleteLink={deleteLink}
       />
       <LinkPreviewCard
         className="link-preview-card"

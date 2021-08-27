@@ -1,15 +1,23 @@
 import { useState } from "react";
 
-const AddOrEditLink = ({ setAddedLinks, setIsEditingLink, addOrEdit, updateLinks, id }) => {
+const AddOrEditLink = ({
+  setIsEditingLink,
+  addOrEdit,
+  updateLinks,
+  addLink,
+  id,
+}) => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
 
   const handleAddingLinks = (title, url) => {
-    if (addOrEdit === 'add') {
-        setAddedLinks([{ title, url }]);
+    if (addOrEdit === "add") {
+      addLink({ title, url, clicks: 0 });
+      setTitle('');
+      setUrl('');
     }
     if (addOrEdit === "edit") {
-        updateLinks({title, url, id, clicks: 0})
+      updateLinks({ title, url, id, clicks: 0 });
       setIsEditingLink(false);
     }
   };
@@ -35,7 +43,7 @@ const AddOrEditLink = ({ setAddedLinks, setIsEditingLink, addOrEdit, updateLinks
       />
 
       <button type="button" onClick={() => handleAddingLinks(title, url)}>
-        Add
+        {addOrEdit === "add" ? "Add" : "Edit"}
       </button>
     </form>
   );
