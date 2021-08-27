@@ -13,3 +13,13 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.edit-button {
+    background-color: #86684A95;
+    border-radius: 3px;
+}
+
+.delete-button {
+    background-color: #86684A95;
+    border-radius: 3px;
+}

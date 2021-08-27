@@ -1,13 +1,23 @@
 import "./LinkPreviewCard.css";
 import LinkPreview from "../LinkPreview/LinkPreview";
+import { useState } from "react";
 
 const LinkPreviewCard = ({ title, links, updateClicks }) => {
+const [className, setClassName] = useState('link-preview')
+  const toggleRoundedCorners = () => {
+    if (className === "link-preview rounded-corners") {
+      setClassName("link-preview");
+    }
+    if (className === "link-preview") {
+      setClassName("link-preview rounded-corners");
+    }
+  };
   return (
-    <div className="preview-card-wrapper">
+    <div className={"preview-card-wrapper"}>
       <div>{title}</div>
       {links.map((link) => (
-          <div className="link-preview" key={link.id}>
-        <LinkPreview   link={link} updateClicks={updateClicks} />
+        <div className={className}  onClick={toggleRoundedCorners} key={link.id}>
+          <LinkPreview className={className} link={link} updateClicks={updateClicks} />
         </div>
       ))}
     </div>

@@ -16,8 +16,8 @@ const LinkEditor = ({ link, updateLinks, deleteLink }) => {
       <div className="link-title">Title: {link.title}</div>
       <div className="link-url">Url: {link.url}</div>
       <div className="edit-delete-button-div">
-      <button onClick={() => setIsEditingLink(true)}>Edit</button>
-      <button onClick={() => deleteLink(link.id)}>Delete</button>
+      <button className="edit-button" onClick={() => setIsEditingLink(true)}>Edit</button>
+      <button className="delete-button" onClick={() => deleteLink(link.id)}>Delete</button>
       </div>
     </div>
   );
