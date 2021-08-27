@@ -28,6 +28,16 @@ function App() {
     );
   };
 
+  const updateClicks = (linkObject) => {
+    const { clicks } = linkObject;
+    const requestOptions = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({clicks: clicks}),
+    };
+    fetch(`https://retoolapi.dev/T6xAX6/links/${linkObject.id}`, requestOptions)
+  }
+
   const addLink = (linkObject) => {
     const requestOptions = {
       method: "POST",
@@ -63,6 +73,7 @@ function App() {
         className="link-preview-card"
         links={linksInBackend}
         title={"Link Preview"}
+        updateClicks={updateClicks}
       />
     </div>
   );
