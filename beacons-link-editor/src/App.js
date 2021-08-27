@@ -17,10 +17,15 @@ function App() {
   }, []);
 
   const updateLinks = (linkObject) => {
-    const newLinkList = linksInBackend.map((link) =>
-      link.id === linkObject.id ? linkObject : link
+    const requestOptions = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(linkObject),
+    };
+    fetch(`https://retoolapi.dev/T6xAX6/links/${linkObject.id}`, requestOptions)
+    .then((response) => response.json())
+      .then(setLinksInBackend(linksInBackend.map((link) => link.id === linkObject.id ? linkObject : link))
     );
-    setLinksInBackend(newLinkList);
   };
 
   const addLink = (linkObject) => {
@@ -40,8 +45,7 @@ function App() {
     };
     fetch(`https://retoolapi.dev/T6xAX6/links/${id}`, requestOptions)
       .then((response) => response.json())
-      .then((link) =>
-        setLinksInBackend(linksInBackend.filter((link) => link.id !== id))
+      .then(setLinksInBackend(linksInBackend.filter((link) => link.id !== id))
       );
   };
 
