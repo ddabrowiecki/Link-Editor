@@ -11,14 +11,18 @@ const AddOrEditLink = ({
   const [url, setUrl] = useState("");
 
   const handleAddingLinks = (title, url) => {
-    if (addOrEdit === "add") {
-      addLink({ title, url, clicks: 0 });
-      setTitle('');
-      setUrl('');
-    }
-    if (addOrEdit === "edit") {
-      updateLinks({ title, url, id, clicks: 0 });
-      setIsEditingLink(false);
+    if (title && url) {
+      if (addOrEdit === "add") {
+        addLink({ title, url, clicks: 0 });
+        setTitle("");
+        setUrl("");
+      }
+      if (addOrEdit === "edit") {
+        updateLinks({ title, url, id, clicks: 0 });
+        setIsEditingLink(false);
+      }
+    } else {
+      alert("Please enter a valid title and URL");
     }
   };
 
